@@ -102,13 +102,13 @@ const login = async (req, res) => {
             );
             console.log('✅ Login bem-sucedido:', paciente);
             return res.status(200).json({
-                id: paciente.id,
-                nome: paciente.nome,
-                email: paciente.email,
-                cpf: paciente.cpf,
-                telefone: paciente.telefone,
-                data_nascimento: paciente.data_nascimento,
-                endereco: paciente.endereco,
+                // id: paciente.id,
+                // nome: paciente.nome,
+                // email: paciente.email,
+                // cpf: paciente.cpf,
+                // telefone: paciente.telefone,
+                // data_nascimento: paciente.data_nascimento,
+                // endereco: paciente.endereco,
                 token,
                 message: 'Login bem-sucedido'
             });

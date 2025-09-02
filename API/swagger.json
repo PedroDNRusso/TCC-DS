@@ -51,6 +51,10 @@
             "description": "Endpoints de pacientes"
         },
         {
+            "name": "Login de Medicos",
+            "description": "Endpoints de login de medicos"
+        },
+        {
             "name": "CRUD de Medicos",
             "description": "Endpoints de medicos"
         }
@@ -73,25 +77,6 @@
             }
         },
         "/pacienteslgn": {
-            "get": {
-                "tags": [
-                    "Login de Pacientes"
-                ],
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ],
-                "summary": "Endpoint para validar o login",
-                "responses": {
-                    "200": {
-                        "description": "Login realizado com sucesso"
-                    },
-                    "401": {
-                        "description": "Token inválido ou expirado"
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "Login de Pacientes"
