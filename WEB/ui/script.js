@@ -13,15 +13,3 @@ function logout() {
   sessionStorage.removeItem("usuario");
   window.location.href = "../home/index.html";
 }
-
-atualizarQuantidade();
-window.atualizarQuantidade = atualizarQuantidade;
-
-document.addEventListener('DOMContentLoaded', () => {
-  const contador = document.getElementById('contadorMensagens');
-  const quantidade = sessionStorage.getItem('quantidadeMensagens');
-
-  if (contador && quantidade !== null) {
-    contador.textContent = quantidade;
-  }
-});
