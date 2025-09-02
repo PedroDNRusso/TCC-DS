@@ -8,7 +8,7 @@ if (!medico) {
   document.getElementById("id").value = medico.id;
   document.getElementById("nome").value = medico.nome;
   document.getElementById("email").value = medico.email;
-  document.getElementById("senha").value = medico.senha;
+  // ⚠️ Não preencher o campo senha com valor do medico
   document.getElementById("cpf").value = medico.cpf;
   document.getElementById("telefone").value = medico.telefone;
   document.getElementById("datanasc").value = medico.data_nascimento;
@@ -30,12 +30,22 @@ document.getElementById("formConfiguracoes").addEventListener("submit", async fu
   const especialidade = document.getElementById("especialidade").value;
 
   try {
-    const response = await fetch(`http://localhost:3000/medicos/${id}`, {
+    const response = await fetch(`http://localhost:3000/medicos/${medico.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id: medico.id, crm, nome, email, senha, cpf, telefone, data_nascimento, endereco, especialidade  }),
+      body: JSON.stringify({ 
+        id: medico.id, 
+        crm, 
+        nome, 
+        email, 
+        senha: senha || null,
+        cpf, 
+        telefone, 
+        data_nascimento, 
+        endereco, 
+        especialidade  }),
     });
 
     const result = await response.json();
@@ -43,7 +53,17 @@ document.getElementById("formConfiguracoes").addEventListener("submit", async fu
 
     if (response.ok) {
       alert("Informações atualizadas com sucesso!");
-      sessionStorage.setItem("medico", JSON.stringify({ id: medico.id, crm, nome, email, senha, cpf, telefone, data_nascimento, endereco, especialidade }));
+
+      sessionStorage.setItem("medico", JSON.stringify({ 
+        id: medico.id, 
+        crm, 
+        nome, 
+        email, 
+        cpf, 
+        telefone, 
+        data_nascimento, 
+        endereco, 
+        especialidade }));
     } else {
       alert("Erro ao atualizar: " + result.message);
     }

@@ -12,7 +12,7 @@ function login() {
     document.getElementById('loginError').textContent = '';
 
     const dados = {
-        crm: form.crm.value,
+        email: form.email.value,
         senha: form.senha.value,
     };
 
