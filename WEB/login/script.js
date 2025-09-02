@@ -25,24 +25,26 @@ function login() {
             const data = await response.json();
 
             if (response.ok) {
-               document.getElementById('loginError').style.color = 'green';
-               document.getElementById('loginError').textContent = 'Login bem-sucedido!';
+                document.getElementById('loginError').style.color = 'green';
+                document.getElementById('loginError').textContent = 'Login bem-sucedido!';
 
-                // Salva nome e email corretos vindos da API
+                // Salva dados do usuário (sem senha) e token JWT
                 sessionStorage.setItem("usuario", JSON.stringify({
-                    id: data.id, // Certifique-se de que o ID está sendo retornado pela API
+                    id: data.id,
                     nome: data.nome,
                     email: data.email,
-                    senha: data.senha,
                     cpf: data.cpf,
-                    telefone: data.telefone, 
-                    data_nascimento: data.data_nascimento, 
-                    endereco: data.endereco, // Armazena a senha para futuras requisições
+                    telefone: data.telefone,
+                    data_nascimento: data.data_nascimento,
+                    endereco: data.endereco
                 }));
+                if (data.token) {
+                    sessionStorage.setItem("token", data.token);
+                }
 
                 setTimeout(() => {
-                        window.location.href = '../ui/index.html';
-            }, 1000); // Redireciona para o perfil
+                    window.location.href = '../ui/index.html'; // Redireciona para configurações
+                }, 1000);
             } else {
                 document.getElementById('loginError').style.color = 'red';
                 document.getElementById('loginError').textContent = data.message || 'Email ou senha inválidos.';

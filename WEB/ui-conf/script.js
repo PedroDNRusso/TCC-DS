@@ -1,7 +1,27 @@
 const usuario = JSON.parse(sessionStorage.getItem("usuario"));
-console.log(usuario);
+const token = sessionStorage.getItem("token");
 
-if (!usuario) {
+async function verificarToken() {
+  if (!token) {
+    window.location.href = "../login/index.html";
+    return;
+  }
+  try {
+    const response = await fetch("http://localhost:3000/pacientes", {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    });
+    if (response.status === 401 || response.status === 500) {
+      sessionStorage.removeItem("usuario");
+      sessionStorage.removeItem("token");
+      window.location.href = "../home/index.html";
+    }
+  } catch (err) {}
+}
+
+if (!usuario || !token) {
   window.location.href = "../login/index.html";
 } else {
   document.getElementById("id").value = usuario.id;
@@ -12,6 +32,7 @@ if (!usuario) {
   document.getElementById("datanasc").value = usuario.data_nascimento;
   document.getElementById("telefone").value = usuario.telefone;
   document.getElementById("endereco").value = usuario.endereco;
+  verificarToken();
 }
 
 document.getElementById("formConfiguracoes").addEventListener("submit", async function (e) {
@@ -30,6 +51,7 @@ document.getElementById("formConfiguracoes").addEventListener("submit", async fu
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        ...(token ? { "Authorization": "Bearer " + token } : {})
       },
       body: JSON.stringify({ 
         id: usuario.id, 
@@ -77,6 +99,9 @@ function deletar() {
 
   fetch(`http://localhost:3000/pacientes/${id}`, {
     method: "DELETE",
+    headers: {
+      ...(token ? { "Authorization": "Bearer " + token } : {})
+    }
   })
     .then((response) => response.json())
     .then((data) => {

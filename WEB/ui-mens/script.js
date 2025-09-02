@@ -1,6 +1,30 @@
 const usuario = JSON.parse(sessionStorage.getItem("usuario"));
-if (!usuario || !usuario.id) {
+const token = sessionStorage.getItem("token");
+
+async function verificarToken() {
+  if (!token) {
+    window.location.href = "../login/index.html";
+    return;
+  }
+  try {
+    const response = await fetch("http://localhost:3000/pacientes", {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    });
+    if (response.status === 401 || response.status === 500) {
+      sessionStorage.removeItem("usuario");
+      sessionStorage.removeItem("token");
+      window.location.href = "../home/index.html";
+    }
+  } catch (err) {}
+}
+
+if (!usuario || !token) {
   window.location.href = "../login/index.html";
+} else {
+  verificarToken();
 }
 
 async function buscarMensagensDoPaciente(pacienteId) {

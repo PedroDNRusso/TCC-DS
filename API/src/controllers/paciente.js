@@ -98,7 +98,7 @@ const login = async (req, res) => {
             const token = jwt.sign(
                 { id: paciente.id, email: paciente.email },
                 jwtSecret,
-                { expiresIn: '1h' }
+                { expiresIn: '5min' }
             );
             console.log('✅ Login bem-sucedido:', paciente);
             return res.status(200).json({
