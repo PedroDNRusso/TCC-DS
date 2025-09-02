@@ -47,7 +47,7 @@ function login() {
             }, 1000); 
         } else {
             document.getElementById('loginError').style.color = 'red';
-            document.getElementById('loginError').textContent = data.message || 'CRM ou senha inválidos.';
+            document.getElementById('loginError').textContent = data.message || 'Email ou senha inválidos.';
         }
     } catch (err) {
         console.error('Erro ao fazer login:', err);
