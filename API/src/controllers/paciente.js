@@ -1,4 +1,9 @@
 const prisma = require('../connect');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const jwtSecret = process.env.JWT_SECRET || "fallback_secret"; // evita undefined
 
 async function gerarIDUnico() {
     let idValido = false;
@@ -21,19 +26,23 @@ async function gerarIDUnico() {
 
 const create = async (req, res) => {
     const { nome, email, senha, cpf, data_nascimento, endereco, telefone } = req.body;
-    console.log('Dados recebidos:', req.body);
+    console.log('📥 Dados recebidos no create:', req.body);
 
     try {
-        const id = await gerarIDUnico(); 
+        const id = await gerarIDUnico();
+        const hashedSenha = await bcrypt.hash(senha, 10);
+
+        console.log("🔑 Senha recebida:", senha);
+        console.log("🔒 Senha hash gerada:", hashedSenha);
 
         const paciente = await prisma.paciente.create({
-            data: { id, nome, email, senha, cpf, data_nascimento, endereco, telefone },
+            data: { id, nome, email, senha: hashedSenha, cpf, data_nascimento, endereco, telefone },
         });
 
-        console.log('Usuário criado:', paciente);
+        console.log('✅ Usuário criado:', paciente);
         res.status(201).json(paciente);
     } catch (err) {
-        console.error('Erro ao criar usuário:', err);
+        console.error('❌ Erro ao criar usuário:', err);
         res.status(400).json(err);
     }
 };
@@ -51,52 +60,66 @@ const readOne = async (req, res) => {
     try {
         const paciente = await prisma.paciente.findUnique({
             where: { id: Number(id) },
-             include:{
-            atestado:true,
-            mensagens:true,
-        }
+            include: {
+                atestado: true,
+                mensagens: true,
+            }
         });
         if (!paciente) {
             return res.status(404).json({ message: 'Paciente não encontrado' });
         }
         res.status(200).json(paciente);
     } catch (err) {
-        console.error('Erro ao buscar paciente por ID:', err);
+        console.error('❌ Erro ao buscar paciente por ID:', err);
         res.status(500).json({ message: 'Erro ao buscar paciente' });
     }
 };
 
 const login = async (req, res) => {
-    const { email, senha } = req.body; 
-    console.log('Tentativa de login:', req.body);
+    const { email, senha } = req.body;
+    console.log('📥 Tentativa de login:', req.body);
     try {
-        const paciente = await prisma.paciente.findUnique({
+        // 🔄 Troquei para findFirst (garante que acha mesmo sem @unique)
+        const paciente = await prisma.paciente.findFirst({
             where: { email },
         });
-        if (paciente) {
-            if (paciente.senha === senha) {
-                console.log('Login bem-sucedido:', paciente);
-                res.status(200).json({
-                    id: paciente.id,
-                    nome: paciente.nome,
-                    email: paciente.email,
-                    senha: paciente.senha, // Incluindo a senha para futuras requisições
-                    cpf: paciente.cpf, 
-                    telefone: paciente.telefone, 
-                    data_nascimento: paciente.data_nascimento, 
-                    endereco: paciente.endereco,
-                    message: 'Login bem-sucedido'
-                });
-            } else {
-                console.log('Senha incorreta');
-                res.status(401).json({ message: 'Senha incorreta' });
-            }
+        console.log('🔎 Paciente encontrado:', paciente);
+
+        if (!paciente) {
+            console.log('❌ Usuário não encontrado');
+            return res.status(401).json({ message: 'Usuário ou senha incorretos' });
+        }
+
+        console.log('🔑 Senha recebida:', senha);
+        console.log('🔒 Hash no banco:', paciente.senha);
+
+        const senhaCorreta = await bcrypt.compare(senha, paciente.senha);
+        console.log('🔍 Comparação de senha correta?', senhaCorreta);
+
+        if (senhaCorreta) {
+            const token = jwt.sign(
+                { id: paciente.id, email: paciente.email },
+                jwtSecret,
+                { expiresIn: '1h' }
+            );
+            console.log('✅ Login bem-sucedido:', paciente);
+            return res.status(200).json({
+                id: paciente.id,
+                nome: paciente.nome,
+                email: paciente.email,
+                cpf: paciente.cpf,
+                telefone: paciente.telefone,
+                data_nascimento: paciente.data_nascimento,
+                endereco: paciente.endereco,
+                token,
+                message: 'Login bem-sucedido'
+            });
         } else {
-            console.log('Usuário não encontrado');
-            res.status(401).json({ message: 'Usuário não encontrado' });
+            console.log('❌ Senha incorreta');
+            return res.status(401).json({ message: 'Usuário ou senha incorretos' });
         }
     } catch (err) {
-        console.error('Erro no login:', err);
+        console.error('❌ Erro no login:', err);
         res.status(500).json({ message: 'Erro interno no servidor' });
     }
 };
@@ -110,22 +133,22 @@ const deletar = async (req, res) => {
         const pacienteExistente = await prisma.paciente.findUnique({ where: { id: Number(id) } });
 
         if (!pacienteExistente) {
-            console.log('Paciente não encontrado para exclusão');
+            console.log('❌ Paciente não encontrado para exclusão');
             return res.status(404).json({ message: 'Paciente não encontrado' });
         }
 
         await prisma.paciente.delete({ where: { id: Number(id) } });
-        console.log('Paciente excluído com sucesso');
+        console.log('🗑️ Paciente excluído com sucesso');
         res.status(200).json({ message: 'Paciente excluído com sucesso' });
     } catch (err) {
-        console.error('Erro ao excluir paciente:', err);
+        console.error('❌ Erro ao excluir paciente:', err);
         res.status(500).json({ message: 'Erro ao excluir paciente' });
     }
 }
 
 const update = async (req, res) => {
     const { id, nome, email, senha, cpf, telefone, data_nascimento, endereco } = req.body;
-    console.log('Requisição de atualização:', req.body);
+    console.log('📥 Requisição de atualização:', req.body);
 
     if (!id || isNaN(Number(id))) {
         return res.status(400).json({ message: 'ID inválido ou ausente' });
@@ -147,22 +170,27 @@ const update = async (req, res) => {
         const pacienteExistente = await prisma.paciente.findUnique({ where: { id: Number(id) } });
 
         if (!pacienteExistente) {
-            console.log('Paciente não encontrado para atualização');
+            console.log('❌ Paciente não encontrado para atualização');
             return res.status(404).json({ message: 'Paciente não encontrado' });
+        }
+
+        let hashedSenha = pacienteExistente.senha;
+        if (senha) {
+            hashedSenha = await bcrypt.hash(senha, 10);
         }
 
         const pacienteAtualizado = await prisma.paciente.update({
             where: { id: Number(id) },
-            data: { nome, email, senha, cpf, telefone, data_nascimento: dataNascimentoFormatada, endereco},
+            data: { nome, email, senha: hashedSenha, cpf, telefone, data_nascimento: dataNascimentoFormatada, endereco },
         });
 
-        console.log('Paciente atualizado com sucesso:', pacienteAtualizado);
+        console.log('✅ Paciente atualizado com sucesso:', pacienteAtualizado);
         res.status(200).json(pacienteAtualizado);
     } catch (err) {
-        console.error('Erro ao atualizar paciente:', err);
+        console.error('❌ Erro ao atualizar paciente:', err);
         res.status(500).json({ message: 'Erro ao atualizar paciente' });
     }
-};
+}; 
 
 module.exports = {
     create,

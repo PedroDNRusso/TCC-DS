@@ -11,7 +11,7 @@ model Paciente{
   id Int @id 
   nome String
   email String @db.VarChar(100) @unique
-  senha String @db.VarChar(50) @unique
+  senha String @db.VarChar(100) @unique
   cpf String? @db.VarChar(11) @unique
   telefone String? @db.VarChar(15)
   data_nascimento DateTime? @db.Date
