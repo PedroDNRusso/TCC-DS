@@ -90,8 +90,6 @@ const login = async (req, res) => {
             return res.status(401).json({ message: 'Usuário ou senha incorretos' });
         }
 
-        console.log('🔑 Senha recebida:', senha);
-        console.log('🔒 Hash no banco:', paciente.senha);
 
         const senhaCorreta = await bcrypt.compare(senha, paciente.senha);
         console.log('🔍 Comparação de senha correta?', senhaCorreta);
