@@ -6,6 +6,7 @@ const medico = require('./controllers/medico.js');
 const func_med = require('./controllers/func_med.js');
 const mens_med = require('./controllers/mens_med.js');
 const { validate } = require('./middleware/auth.js');
+const { validateMED } = require('./middleware/authm.js');
 
 rota.get('/', (req, res) => {
     res.json({ titulo: 'API DD respondendo' });
@@ -22,10 +23,10 @@ rota.delete('/pacientes/:id', validate, paciente.deletar); // Rota para deletar 
 // Rota de medico
 rota.post('/medicos', medico.create); // Rota para cadastro
 rota.post('/medicoslgn', medico.login); // Rota para login
-rota.get('/medicos', validate, medico.read); // Rota para ler todos os enfermiros
-rota.put('/medicos/:id', validate, medico.update); // Rota para update
-rota.get('/medicos/:id', validate, medico.readOne); // Rota para ler medico por ID
-rota.delete('/medicos/:id', validate, medico.deletar); // Rota para deletar medico por ID
+rota.get('/medicos', validateMED, medico.read); // Rota para ler todos os enfermiros
+rota.put('/medicos/:id', validateMED, medico.update); // Rota para update
+rota.get('/medicos/:id', validateMED, medico.readOne); // Rota para ler medico por ID
+rota.delete('/medicos/:id', validateMED, medico.deletar); // Rota para deletar medico por ID
 
 // Rota de atestado
 rota.post('/funcmed', validate, func_med.create); // Rota para criar atestado

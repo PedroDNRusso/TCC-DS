@@ -1,12 +1,39 @@
 const medico = JSON.parse(sessionStorage.getItem("medico"));
+const token = sessionStorage.getItem("token");
 
-if (!medico) {
+async function verificarToken() {
+  if (!token) {
+    window.location.href = "../login-med/index.html";
+    return;
+  }
+  try {
+    // Faz uma requisição protegida para testar o token
+    const response = await fetch("http://localhost:3000/medicos", {
+      method: "GET",
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    });
+    if (response.status === 401 || response.status === 500) {
+      // Token expirado ou inválido
+      sessionStorage.removeItem("medico");
+      sessionStorage.removeItem("token");
+      window.location.href = "../home/index.html";
+    }
+  } catch (err) {
+    // Se houver erro de conexão, não faz nada
+  }
+}
+
+if (!medico || !token) {
   window.location.href = "../login-med/index.html";
 } else {
   document.getElementById("id").textContent = medico.id;
   document.getElementById("nome").textContent = medico.nome;
   document.getElementById("email").textContent = medico.email;
   document.getElementById("crm").textContent = medico.crm;
+  // Não exibir senha por segurança
+  verificarToken(); // Verifica o token ao carregar
 }
 
 function logout() {

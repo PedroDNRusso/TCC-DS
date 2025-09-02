@@ -41,7 +41,9 @@ function login() {
                         endereco: data.endereco,
                         especialidade: data.especialidade
             }));
-
+                if (data.token) {
+                    sessionStorage.setItem("token", data.token);
+                }
             setTimeout(() => {
                         window.location.href = '../ui-med/index.html';
             }, 1000); 
