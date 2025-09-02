@@ -151,9 +151,9 @@ Para visualizar nosso canvas e calendario de desenvolvimento vá até [DOCS](htt
 ## Proxima Sprint - Sprint 04
 - [x] Back-End - CRUDs (Cadastro, Listagem, alteração e exclusão) das principais **tabelas**.
 - [x] Back-Front - CRUDs das principais **Telas** com Responsividade.
-- [ ] Login com autenticação real (segurança JWT).
+- [x] Login com autenticação real (segurança JWT).
 - [x] Integração do front com o back-end e banco de dados. 
-- [ ] Fluxo de navegação funcionando (Web e/ou Mobile).
+- [x] Fluxo de navegação funcionando (Web e/ou Mobile).
 - [ ] Relatório de testes manuais **unitários**, **integração** e **ponto a ponto**.
 - [x] Entregas através do repositório do projeto no GitHub, com evidências dos testes em relatório no formato PDF.
 
@@ -212,6 +212,6 @@ Veja nosso prototipo no Figma [aqui](https://www.figma.com/design/3eLOSaQYqpNQFm
 | 11/07/2025     | Agente de AI novo desenvolvido com Gemini 2.5 Flash aplicado em produção para o UI Paciente (User Interface)   |
 | 26/08/2025     | Implementação do Swagger (Conjunto de ferrementas para contruir, projetar, documentar e consumir APIs) |
 | 27/08/2025     | Aplicando responsividade nas telas (Web/Mobile) e retirando funções e usuario Enfermeiro |
-| 02/09/2025     | Aplicando JWT no Back-End e no Front-End em UI de Pacientes (User Interface) |
+| 02/09/2025     | Aplicando JWT no Back-End e no Front-End em UI de Pacientes e Medico (User Interface) |
 
 #### Readme escrito e estruturado por [Pedro Duarte Naddeu Russo](https://github.com/PedroDNRusso)
