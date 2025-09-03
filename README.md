@@ -154,7 +154,7 @@ Para visualizar nosso canvas e calendario de desenvolvimento vá até [DOCS](htt
 - [x] Login com autenticação real (segurança JWT).
 - [x] Integração do front com o back-end e banco de dados. 
 - [x] Fluxo de navegação funcionando (Web e/ou Mobile).
-- [ ] Relatório de testes manuais **unitários**, **integração** e **ponto a ponto**.
+- [x] Relatório de testes manuais **unitários**, **integração** e **ponto a ponto**.
 - [x] Entregas através do repositório do projeto no GitHub, com evidências dos testes em relatório no formato PDF.
 
 ## Requisitos funcionais
