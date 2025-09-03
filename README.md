@@ -213,5 +213,6 @@ Veja nosso prototipo no Figma [aqui](https://www.figma.com/design/3eLOSaQYqpNQFm
 | 26/08/2025     | Implementação do Swagger (Conjunto de ferrementas para contruir, projetar, documentar e consumir APIs) |
 | 27/08/2025     | Aplicando responsividade nas telas (Web/Mobile) e retirando funções e usuario Enfermeiro |
 | 02/09/2025     | Aplicando JWT no Back-End e no Front-End em UI de Pacientes e Medico (User Interface) |
+| 03/09/2025     | Documentação de testes e aplicando responsividade as telas (login, cadastro, home, etc)  |
 
 #### Readme escrito e estruturado por [Pedro Duarte Naddeu Russo](https://github.com/PedroDNRusso)

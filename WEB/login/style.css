@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* Paleta de cores */
 :root{
     --primary-color: #0056b3;
     --primary-color-dark:#007bff;
@@ -28,6 +27,7 @@ body {
   height: 100vh;
   margin: 0;
   font-family: 'Poppins', sans-serif;
+  padding: 0 1rem; 
 }
 
 a {
@@ -41,7 +41,7 @@ a:hover {
 
 .main-header {
   background: linear-gradient(250deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-  padding: 20px 40px;
+  padding: 20px 30px; 
   color: var(--secondary-color);
   position: fixed;
   top: 0;
@@ -57,6 +57,13 @@ a:hover {
   align-items: center;
 }
 
+.nav_logo {
+    font-size: 3rem; 
+    font-weight: 600;
+    color: var(--primary-color-light);
+    transition: 1.5s;
+}
+
 .nav_logo span{
     color: var(--secondary-color);
     transition: 0.5s;
@@ -64,13 +71,6 @@ a:hover {
 
 .nav_logo span:hover{
     color: var(--primary-color-light);
-}
-
-.nav_logo {
-    font-size: 50px;
-    font-weight: 600;
-    color: var(--primary-color-light);
-    transition: 1.5s;
 }
 
 .nav_logo:hover{
@@ -82,10 +82,11 @@ a:hover {
   color: white;
   border: none;
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s;
+  font-size: 1rem; 
 }
 
 .nav-buttons button:hover {
@@ -94,100 +95,64 @@ a:hover {
 
 .ring {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 400px; 
+  height: 400px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 0;
 }
 
-.ring i {
-  position: absolute;
-  inset: 0;
-  border: 2px solid #444;
-  transition: 0.5s ease-in-out;
-}
-
-.ring i:nth-child(1) {
-  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-  animation: animate 6s linear infinite;
-}
-.ring i:nth-child(2) {
-  border-radius: 41% 44% 56% 59%/38% 62% 63% 37%;
-  animation: animate 20s linear infinite;
-}
-.ring i:nth-child(3) {
-  border-radius: 41% 44% 56% 59%/38% 62% 63% 39%;
-  animation: animate2 10s linear infinite;
-}
-
-.ring:hover i {
-  border: 4px solid var(--clr, #955643);
-  filter: drop-shadow(0 0 25px var(--clr, #955643));
-}
-
-@keyframes animate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate2 {
-  0% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
 .container {
   position: relative;
   z-index: 1;
   border-radius: 15px;
-  padding: 40px;
+  padding: 20px;
+  width: 100%;
+  max-width: 450px; 
+  background: #ffffffbb; 
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.479);
 }
 
 form {
-  background: #ffffff00;
+  background: transparent;
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  padding: 20px;
   justify-content: center;
   align-items: center;
   text-align: center;
+  width: 100%;
 }
 
+/* ===== INPUTS COM ÍCONES ===== */
 .input-field {
-  width: 400px;
-  height: 55px;
+  width: 100%;
+  height: 50px;
   background-color: var(--icons);
   margin: 10px 0;
   border-radius: 55px;
   display: grid;
-  grid-template-columns: 15% 70% 15%;
-  padding: 0 0.4rem;
+  grid-template-columns: 15% 70% 15%; /* ícone esquerda + input + ícone direita */
+  align-items: center;
+  padding: 0 0.8rem;
 }
 
 .input-field i {
   text-align: center;
-  line-height: 55px;
   color: var(--primary-dark-light);
-  font-size: 1.1rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .input-field input {
-  background: var(--icons);
+  background: transparent;
   outline: none;
   border: none;
-  line-height: 1;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--primary-dark);
+  width: 100%;
 }
 
 .input-field input::placeholder {
@@ -195,18 +160,29 @@ form {
   font-weight: 500;
 }
 
+/* Ícone do olho */
+.toggle-eye {
+  color: var(--primary-dark-light);
+  transition: 0.3s;
+}
+
+.toggle-eye:hover {
+  color: var(--primary-dark);
+}
+
 .erro {
     color: #a31717;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
 button {
   border: none;
-  padding: 14px 40px;
+  padding: 12px 32px;
   margin-top: 15px;
   background: var(--secondary-color);
   color: #fff;
-  font-size: 15px;
+  font-size: 0.95rem;
   font-weight: bold;
   cursor: pointer;
   border-radius: 25px;
@@ -215,4 +191,75 @@ button {
 
 button:hover {
   background: var(--secundary-color-dark);
+  transform: translateY(-2px);
+}
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 1rem;
+  }
+
+  .main-header {
+    padding: 20px 25px;
+  }
+
+  .nav_logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-buttons button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .ring {
+    display: none; 
+  }
+
+  .container {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  .input-field {
+    height: 45px;
+  }
+
+  button {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav_logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-buttons {
+    display: none; 
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .input-field {
+    height: 42px;
+  }
+
+  .input-field input {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
 }
