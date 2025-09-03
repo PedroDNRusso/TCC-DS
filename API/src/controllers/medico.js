@@ -93,6 +93,14 @@ const login = async (req, res) => {
                 { expiresIn: '1h' }
             );
             return res.status(200).json({
+                    id: medico.id,
+                    nome: medico.nome,
+                    email: medico.email,
+                    cpf: medico.cpf,
+                    telefone: medico.telefone,
+                    data_nascimento: medico.data_nascimento,
+                    endereco: medico.endereco,
+                    especialidade: medico.especialidade,
                     token,
                     message: 'Login bem-sucedido'
                 });
