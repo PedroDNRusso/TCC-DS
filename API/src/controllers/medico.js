@@ -94,6 +94,7 @@ const login = async (req, res) => {
             );
             return res.status(200).json({
                     id: medico.id,
+                    crm: medico.crm,
                     nome: medico.nome,
                     email: medico.email,
                     cpf: medico.cpf,

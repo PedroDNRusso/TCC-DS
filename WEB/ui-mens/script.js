@@ -29,7 +29,11 @@ if (!usuario || !token) {
 
 async function buscarMensagensDoPaciente(pacienteId) {
   try {
-    const response = await fetch(`http://localhost:3000/mensmed/paciente/${pacienteId}`);
+    const response = await fetch(`http://localhost:3000/mensmed/paciente/${pacienteId}`
+      , { headers: {
+        ...(token ? { "Authorization": "Bearer " + token } : {})
+       } }
+    );
 
     document.getElementById('loginError').textContent = '';
 
@@ -91,6 +95,9 @@ function deletar(id) {
 
   fetch(`http://localhost:3000/mensmed/${id}`, {
     method: "DELETE",
+    headers: {
+      ...(token ? { "Authorization": "Bearer " + token } : {})
+     }
   })
     .then((response) => response.json())
     .then((data) => {

@@ -34,7 +34,7 @@ rota.get('/funcmed', validate, func_med.read); // Rota para ler todos os atestad
 rota.get('/funcmed/paciente/:pacienteId', validate, func_med.readOne);
 
 // Rota de Mensagem de Médico
-rota.post('/mensmed', validate, mens_med.create); // Rota para criar mensagem
+rota.post('/mensmed', validateMED, mens_med.create); // Rota para criar mensagem
 rota.get('/mensmed', validate, mens_med.read); // Rota para ler todos os mensagens
 rota.get('/mensmed/paciente/:pacienteId', validate, mens_med.readOne);
 rota.delete('/mensmed/:id', validate, mens_med.deletar); // Rota para deletar mensagem por ID
