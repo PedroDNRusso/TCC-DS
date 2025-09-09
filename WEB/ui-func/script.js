@@ -30,8 +30,12 @@ if (!usuario || !token) {
 
 async function buscarAtestadosDoPaciente(pacienteId) {
   try {
-    const response = await fetch(`http://localhost:3000/funcmed/paciente/${pacienteId}`);
-    
+    const response = await fetch(`http://localhost:3000/funcmed/paciente/${pacienteId}`,{
+      method: "GET",
+      headers: { "Content-Type": "application/json",
+        ...(token ? { "Authorization": "Bearer " + token } : {})
+       }
+    });
     if (!response.ok) {
       throw new Error("Erro ao buscar atestados");
     }

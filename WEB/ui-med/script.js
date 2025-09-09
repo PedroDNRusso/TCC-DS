@@ -52,7 +52,12 @@ async function buscarPacientePorId() {
         }
 
         try {
-            const response = await fetch(`http://localhost:3000/pacientes/${id}`);
+            const response = await fetch(`http://localhost:3000/pacientes/${id}`,{
+                method: "GET",
+                headers: { "Content-Type": "application/json",
+                  ...(token ? { "Authorization": "Bearer " + token } : {})
+                 }
+            })
             if (!response.ok) {
                 resultadoDiv.innerHTML = '<span class="erro">Paciente não encontrado.</span>';
                 return;

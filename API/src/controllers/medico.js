@@ -186,11 +186,12 @@ const update = async (req, res) => {
 
 
 
+
 module.exports = {
     create,
     login,
     read,
     readOne,
     deletar,
-    update
+    update,
 };

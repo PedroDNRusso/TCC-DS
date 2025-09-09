@@ -15,9 +15,9 @@ rota.get('/', (req, res) => {
 //Rotas de paciente
 rota.post('/pacientes', paciente.create); // Rota para cadastro de paciente
 rota.post('/pacienteslgn', paciente.login); // Rota para login
+rota.get('/pacientes/:id', validateMED, paciente.readOne); // Rota para ler paciente por ID
 rota.get('/pacientes', validate, paciente.read); // Rota para ler todos os pacientes
 rota.put('/pacientes/:id', validate, paciente.update); // Rota para atualizar paciente
-rota.get('/pacientes/:id', validate, paciente.readOne); // Rota para ler paciente por ID
 rota.delete('/pacientes/:id', validate, paciente.deletar); // Rota para deletar paciente por ID
 
 // Rota de medico
@@ -29,7 +29,7 @@ rota.get('/medicos/:id', validateMED, medico.readOne); // Rota para ler medico p
 rota.delete('/medicos/:id', validateMED, medico.deletar); // Rota para deletar medico por ID
 
 // Rota de atestado
-rota.post('/funcmed', validate, func_med.create); // Rota para criar atestado
+rota.post('/funcmed', validateMED, func_med.create); // Rota para criar atestado
 rota.get('/funcmed', validate, func_med.read); // Rota para ler todos os atestados
 rota.get('/funcmed/paciente/:pacienteId', validate, func_med.readOne);
 
