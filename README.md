@@ -216,6 +216,7 @@ Veja nosso prototipo no Figma [aqui](https://www.figma.com/design/3eLOSaQYqpNQFm
 | 27/08/2025     | Aplicando responsividade nas telas (Web/Mobile) e retirando funções e usuario Enfermeiro |
 | 02/09/2025     | Aplicando JWT no Back-End e no Front-End em UI de Pacientes e Medico (User Interface) |
 | 03/09/2025     | Documentação de testes e aplicando responsividade nas telas (login, cadastro, home, etc)  |
-| 09/09/2025     |   |
+| 09/09/2025     | Autenticação em todas as funções referentes a paciente e medico  |
+| 10/09/2025     | Deploy do Back-End e do Front-End no Vercel  |
 
 #### Readme escrito e estruturado por [Pedro Duarte Naddeu Russo](https://github.com/PedroDNRusso)
