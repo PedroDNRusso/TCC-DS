@@ -1,14 +1,6 @@
 # Wireframes do site e Requisitos Funcionais e Não Fucionais
 
 * [Repositorio do Front-End](https://github.com/PedroDNRusso/TCC-DS-FRTEND)
-
-## Requisitos Funcionais
-
-- [RF001] Paciente pode fazer cadastro, atualizar suas informações e excluir seu cadastro
-- [RF001.1] Paciente pode visualizar e excluir recados e visualizar atestados
-- [RF002] Medico pode fazer cadastro, atualizar suas informações e excluir seu cadastro
-- [RF002.1] Medico pode criar atestados (Func_Med) e enviar recados para os pacientes (Mens_Med)
-
 ## Requisitos Sprint 1
 - [x] Escolher a metodologia **SCRUM, KANBAN, XP, outras**
 - [x] Definir **Papéis e responsabilidades**
