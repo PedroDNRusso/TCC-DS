@@ -1,6 +1,8 @@
 # TCC (Trabalho de Conclusão de Curso)
 Em processo de desenvolvimento
 
+* [Repositorio do Back-End](https://github.com/PedroDNRusso/TCC-DS-BKEND)
+
 ## Integrantes: 
 * Pedro Duarte, 
 * Rodrigo Passberg, 
