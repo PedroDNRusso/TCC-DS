@@ -83,11 +83,11 @@ git config --global user.email "seu-email@exemplo.com"
 
 ## Requisitos Funcionais
 
-- [RF001] Paciente pode fazer cadastro, atualizar suas informações e excluir seu cadastro
-- [RF001.1] Paciente pode visualizar e excluir recados e visualizar atestados
-- [RF002] Medico pode fazer cadastro, atualizar suas informações e excluir seu cadastro
-- [RF002.1] Medico pode criar atestados (Func_Med) e enviar recados para os pacientes (Mens_Med)
-
+- [RF001] Pacientes podem fazer cadastro, atualizar suas informações e excluir seu cadastro
+- [RF001.1] Pacientes podem visualizar e excluir recados e visualizar atestados
+- [RF002] Medicos podem fazer cadastro, atualizar suas informações e excluir seu cadastro
+- [RF002.1] Medicos podem criar atestados (Func_Med) e enviar recados para os pacientes (Mens_Med)
+- [RF003] Medicos podem visualizar informações dos pacientes via ID (Nome, CPF, data de nascimento, etc)
 
 ## Tecnologias Utilizadas para o Desenvolvimento
 | Linguagens e Ferramentas  | Funcionalidade |
