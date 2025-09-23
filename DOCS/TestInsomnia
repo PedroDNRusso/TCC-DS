@@ -4,304 +4,485 @@ meta:
   id: wrk_scratchpad
   created: 1748365843088
   modified: 1748365843088
+  description: ""
 collection:
-  - name: DD
+  - name: Pacientes
     meta:
-      id: fld_c56dfeccf15e4a6badbe3bfd0768a3aa
-      created: 1748435777522
-      modified: 1748438125188
-      sortKey: -1748435777522
+      id: fld_e489f3d0b3624c4fac29df5ef5a0f87c
+      created: 1758634287788
+      modified: 1758648099212
+      sortKey: -1758634287788
+      description: ""
     children:
-      - name: Paciente
+      - url: http://localhost:3000/pacientes/7873
+        name: DELETE
         meta:
-          id: fld_129301de88d44332bf9c2ab28d660dd4
-          created: 1748435783732
-          modified: 1748435797282
-          sortKey: -1748435797256
-        children:
-          - url: http://localhost:3000/pacientes
-            name: New Request
-            meta:
-              id: req_f65ce76d55584a199190b88d7e2815d8
-              created: 1748435767467
-              modified: 1748438115954
-              isPrivate: false
-              sortKey: -1748435804992
-            method: GET
-            headers:
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - url: http://localhost:3000/update
-            name: New Request
-            meta:
-              id: req_a02982aa3d45470caff8b2c6d859d3b0
-              created: 1748435806830
-              modified: 1748451940072
-              isPrivate: false
-              sortKey: -1748435804973.25
-            method: PUT
-            body:
-              mimeType: application/json
-              text: |-
-                {
-                	"id": 2815,
-                	"nome": "Mellyssa Silveira de Medeiros",
-                	"email": "mel@gmail.com",
-                	"senha": "mel123"
-                }
-            headers:
-              - name: Content-Type
-                value: application/json
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - url: http://localhost:3000/cadastro
-            name: New Request
-            meta:
-              id: req_f6626a84108f4806925170cd85e4e398
-              created: 1748435807168
-              modified: 1748451938681
-              isPrivate: false
-              sortKey: -1748435804979.5
-            method: POST
-            body:
-              mimeType: application/json
-              text: |-
-                {
-                	"nome": "Mellyssa Silveira",
-                	"email": "mel@gmail.com",
-                	"senha": "mel123"
-                }
-            headers:
-              - name: Content-Type
-                value: application/json
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - url: http://localhost:3000/delete/2815
-            name: New Request
-            meta:
-              id: req_d86459534b284712a50c0be5def9bbd0
-              created: 1748451916961
-              modified: 1748456841253
-              isPrivate: false
-              sortKey: -1748435804967
-            method: DELETE
-            body:
-              mimeType: application/json
-            headers:
-              - name: Content-Type
-                value: application/json
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-      - name: Enfermeiro
+          id: req_9a3446a6cc6d4e6382e3350748776b33
+          created: 1758634302709
+          modified: 1758637600745
+          isPrivate: false
+          description: ""
+          sortKey: -1758634713719
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nzg3MywiZW1haWwiOiJiaWFAZW1haWwuY29tIiwiaWF0IjoxNzU4NjM1NzgzLCJleHAiOjE3NTg2MzkzODN9.RNMNzGGi02sGH__-kUV7Fv45CQ_EiimGDxlAhxIyX3E
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/pacientes/7873
+        name: UPDATE
         meta:
-          id: fld_d41bb531d0604db38a475bff52cf08ca
-          created: 1748435789296
-          modified: 1748435872779
-          sortKey: -1748435797356
-        children:
-          - url: http://localhost:3000/updateenf
-            name: New Request
-            meta:
-              id: req_3a5ae52a75f1498eaa1f6cc8e75f393f
-              created: 1748435817583
-              modified: 1748451943156
-              isPrivate: false
-              sortKey: -1748435824832.5
-            method: PUT
-            body:
-              mimeType: application/json
-              text: |-
-                {
-                	"ecip": 123321123,
-                	"nome": "Pedro Duarte Naddeu Russo",
-                	"area": "Triagem",
-                	"email": "pedronaddeu@gmail.com",
-                	"senha": "pedro231"
-                }
-            headers:
-              - name: Content-Type
-                value: application/json
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - url: http://localhost:3000/registroenf
-            name: New Request
-            meta:
-              id: req_1724cba5c1e44a4e87f6e221210861c5
-              created: 1748435824660
-              modified: 1748451944871
-              isPrivate: false
-              sortKey: -1748443872977.5
-            method: POST
-            body:
-              mimeType: application/json
-              text: |-
-                {
-                	"nome": "Pedro Duarte",
-                	"ecip": 123321123,
-                	"area": "Pediatria",
-                	"email": "pedronaddeu@gmail.com",
-                	"senha": "pedro123"
-                }
-            headers:
-              - name: Content-Type
-                value: application/json
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - url: http://localhost:3000/deleteenf/123321123
-            name: New Request
-            meta:
-              id: req_32537c12de4f4a60b4ceb87ce8189fd5
-              created: 1748435825005
-              modified: 1748456808682
-              isPrivate: false
-              sortKey: -1748435824732.5
-            method: DELETE
-            body:
-              mimeType: application/json
-            headers:
-              - name: Content-Type
-                value: application/json
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - name: New Request
-            meta:
-              id: req_3861f372d9bb49dbb339c83c5636fcc9
-              created: 1748451920950
-              modified: 1748451920950
-              isPrivate: false
-              sortKey: -1748451920950
-            method: GET
-            headers:
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-      - name: Medico
+          id: req_77120ce21fc34874a304936858c771f6
+          created: 1758634304328
+          modified: 1758635771977
+          isPrivate: false
+          description: ""
+          sortKey: -1758634713819
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": 7873,
+            	"nome": "Beatriz",
+              "email": "bia@email.com",
+              "senha": "senha12345"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Nzg3MywiZW1haWwiOiJiaWFAZW1haWwuY29tIiwiaWF0IjoxNzU4NjM1NjU3LCJleHAiOjE3NTg2MzkyNTd9.GE_bjCUKzOXbNgGTf_9D8D7CEaKcZDGwMIuJe8kMZpY
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/pacientes
+        name: CREATE
         meta:
-          id: fld_ca00ffcb168449fe9f4662b43f59d5d6
-          created: 1748435793570
-          modified: 1748435799385
-          sortKey: -1748435797456
-        children:
-          - name: New Request
-            meta:
-              id: req_6f32ec28e3544af782344b9669959225
-              created: 1748435817137
-              modified: 1748435845895
-              isPrivate: false
-              sortKey: -1748435836970
-            method: GET
-            headers:
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - name: New Request
-            meta:
-              id: req_f927dece12754477abdd5eead2517650
-              created: 1748435817375
-              modified: 1748435836985
-              isPrivate: false
-              sortKey: -1748435836920
-            method: GET
-            headers:
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
-          - name: New Request
-            meta:
-              id: req_3f722cdf686642d798068e207d4b5edc
-              created: 1748435829925
-              modified: 1748435841490
-              isPrivate: false
-              sortKey: -1748435837020
-            method: GET
-            headers:
-              - name: User-Agent
-                value: insomnia/11.1.0
-            settings:
-              renderRequestBody: true
-              encodeUrl: true
-              followRedirects: global
-              cookies:
-                send: true
-                store: true
-              rebuildPath: true
+          id: req_fbc4ac92c6084c2887dc387677288084
+          created: 1758634304511
+          modified: 1758635636028
+          isPrivate: false
+          description: ""
+          sortKey: -1758634713869
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Beatriz",
+              "email": "bia@email.com",
+              "senha": "senha123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/pacientes
+        name: READONE
+        meta:
+          id: req_918214e314e840b887c39b533ee12e7b
+          created: 1758634304698
+          modified: 1758645693085
+          isPrivate: false
+          description: ""
+          sortKey: -1758634714019
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM4MSwiZW1haWwiOiJiaWFAZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ1Njg0LCJleHAiOjE3NTg2NDkyODR9.BduFg9Ab1UvkAOhbyixG4CXgvYyzz33gEy7psH_Lrwc
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/pacienteslgn
+        name: LOGIN
+        meta:
+          id: req_871674410eb74041881e77536ce3a72e
+          created: 1758634908918
+          modified: 1758645683490
+          isPrivate: false
+          description: ""
+          sortKey: -1758634713944
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	 "email": "bia@email.com",
+              "senha": "senha123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Medicos
+    meta:
+      id: fld_8c4c856a94644bb3833499f979e03745
+      created: 1758634295766
+      modified: 1758635126582
+      sortKey: -1758634295766
+      description: ""
+    children:
+      - url: http://localhost:3000/medicos/13589
+        name: DELETE
+        meta:
+          id: req_365870c0be0343368483d72c2b18681b
+          created: 1758634727625
+          modified: 1758637549725
+          isPrivate: false
+          description: ""
+          sortKey: -1758634730182
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM1ODksImVtYWlsIjoicGVkcm9AZW1haWwuY29tIiwiaWF0IjoxNzU4NjM3Mzg0LCJleHAiOjE3NTg2NDA5ODR9.GBjumImQAxENrsIZzJEaMLt2xz7wxzQJllq71EDicK8
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/medicos
+        name: READONE
+        meta:
+          id: req_daaf8d8f15644a739370c1d29c86b3e7
+          created: 1758634727787
+          modified: 1758645248196
+          isPrivate: false
+          description: ""
+          sortKey: -1758634730282
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk4NDMsImVtYWlsIjoicGVkcm9AZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ1MjM3LCJleHAiOjE3NTg2NDg4Mzd9.JpkN34VjGCRDsH6kB2nr7CcFkR9hfowIvv_9j_EvTI4
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/medicos/13589
+        name: UPDATE
+        meta:
+          id: req_87ccafa1e97a487380dcc71bc9975d7b
+          created: 1758634727947
+          modified: 1758637485845
+          isPrivate: false
+          description: ""
+          sortKey: -1758634730232
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"id": 13589,
+            	"nome": "Pedro Duarte",
+              "email" : "pedro@email.com",
+              "senha": "pedro123",
+              "crm": "12121212"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM1ODksImVtYWlsIjoicGVkcm9AZW1haWwuY29tIiwiaWF0IjoxNzU4NjM3Mzg0LCJleHAiOjE3NTg2NDA5ODR9.GBjumImQAxENrsIZzJEaMLt2xz7wxzQJllq71EDicK8
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/medicos
+        name: CREATE
+        meta:
+          id: req_f40fbf7057044bcdbbd2f2161890876d
+          created: 1758634728103
+          modified: 1758645478848
+          isPrivate: false
+          description: ""
+          sortKey: -1758634730257
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Pedro",
+              "email" : "pedro@email.com",
+              "senha": "pedro123",
+              "crm": "12121212",
+            	"data_nascimento": ,
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/medicoslgn
+        name: LOGIN
+        meta:
+          id: req_53fee629ff7c48ceb2bebe29e1e3eb20
+          created: 1758634881382
+          modified: 1758645173185
+          isPrivate: false
+          description: ""
+          sortKey: -1758634730269.5
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email" : "pedro@email.com",
+              "senha": "pedro123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Func_Med
+    meta:
+      id: fld_577083b487e44966a31252e7c531eb37
+      created: 1758645002457
+      modified: 1758645007692
+      sortKey: -1758634291777
+      description: ""
+    children:
+      - url: http://localhost:3000/funcmed
+        name: READONE
+        meta:
+          id: req_ca49eaf1f1fd461e893c7d6a9a45e2ac
+          created: 1758645049112
+          modified: 1758645276147
+          isPrivate: false
+          description: ""
+          sortKey: -1758645052677
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk4NDMsImVtYWlsIjoicGVkcm9AZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ1MjM3LCJleHAiOjE3NTg2NDg4Mzd9.JpkN34VjGCRDsH6kB2nr7CcFkR9hfowIvv_9j_EvTI4
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/funcmed
+        name: CREATE
+        meta:
+          id: req_bd39bad9d4324a25821c2d67b879c134
+          created: 1758645050368
+          modified: 1758645573191
+          isPrivate: false
+          description: ""
+          sortKey: -1758645052477
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"pacienteId": 1381, 
+              "medicoId": 19843, 
+              "nome_pac": "Beatriz",
+              "nome_med": "Pedro",
+              "crm_med": "12121212",
+              "cpf_pac": "54381555856",
+              "data": "2015-07-05T00:00:00.000Z",
+              "afast_o": "2015-07-05T00:00:00.000Z",
+              "afast_c": "2015-07-05T00:00:00.000Z",
+              "motivo": "Asma",
+              "ass_med": "Pedro Duarte"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk4NDMsImVtYWlsIjoicGVkcm9AZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ1MjM3LCJleHAiOjE3NTg2NDg4Mzd9.JpkN34VjGCRDsH6kB2nr7CcFkR9hfowIvv_9j_EvTI4
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Mens_Med
+    meta:
+      id: fld_3e5243d206e14aa9860be86ac738a907
+      created: 1758647734801
+      modified: 1758647734801
+      sortKey: -1758647734801
+      description: ""
+    children:
+      - url: http://localhost:3000/mensmed/1908
+        name: DELETE
+        meta:
+          id: req_6153db616a1d49788bbe1d0127608d66
+          created: 1758647744404
+          modified: 1758648107126
+          isPrivate: false
+          description: ""
+          sortKey: -1758647746470
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM4MSwiZW1haWwiOiJiaWFAZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ3ODQ0LCJleHAiOjE3NTg2NTE0NDR9.gppbIhuYXd_KIZTTr9BDuUl6uErcK87__c4xu2dAHSU
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/mensmed
+        name: CREATE
+        meta:
+          id: req_ee709deda26d43c3ba53f9cf88d0892a
+          created: 1758647744596
+          modified: 1758648016005
+          isPrivate: false
+          description: ""
+          sortKey: -1758647746570
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"pacienteId": 1381, 
+              "medicoId": 19843, 
+              "nome_pac": "Beatriz",
+            	"mensagem": "Tudo bem bia, como voce esta?"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTk4NDMsImVtYWlsIjoicGVkcm9AZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ1MjM3LCJleHAiOjE3NTg2NDg4Mzd9.JpkN34VjGCRDsH6kB2nr7CcFkR9hfowIvv_9j_EvTI4
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/mensmed
+        name: READONE
+        meta:
+          id: req_86bb89ee5d284db88d3bf95192eb47e0
+          created: 1758647744951
+          modified: 1758647853946
+          isPrivate: false
+          description: ""
+          sortKey: -1758647746770
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTM4MSwiZW1haWwiOiJiaWFAZW1haWwuY29tIiwiaWF0IjoxNzU4NjQ3ODQ0LCJleHAiOjE3NTg2NTE0NDR9.gppbIhuYXd_KIZTTr9BDuUl6uErcK87__c4xu2dAHSU
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
