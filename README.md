@@ -169,8 +169,8 @@ Nesta sprint, vamos focar na implantação do projeto, garantindo que tudo estej
     - [ ] Após o **front-end** implantado, Criar um Roteiro/check-list para testar o **Front-End** manualmente (**Teste ponto a ponto**), fazer um relatório dos testes. (**Caixa branca**).
     - [ ] Criar um Roteiro/check-list (**teste de integração**) pedir para um colega de outro grupo testar a **API implantada** a partir do **Insomnia** e documentar os testes. Tirando prints e fazendo um relatório. (**Caixa preta**).
     - [ ] Criar um Roteiro/check-list (Teste **ponto a ponto**) pedir para um colega de outro grupo testar manualmente o **Front-End implantado** e fazer um relatório dos testes. (**Caixa preta**).
-- [x] Adicionar um recurso de **IoT** (opcional, pois dependendo do tema pode não fazer sentido).
-- [ ] Revisão do cronograma do projeto.
+- [x] Adicionar um recurso de **IoT** (opcional, pois dependendo do tema pode não fazer sentido). 
+- [x] Revisão do cronograma do projeto.
 - [ ] Revisão da documentação.
     - [x] Matriz SWOT.
     - [x] DER atualizado ou UML Diagrama de Classes.
