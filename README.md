@@ -112,10 +112,6 @@ git config --global user.email "seu-email@exemplo.com"
 
 Para visualizar nosso canvas e calendario de desenvolvimento vá até [DOCS](https://github.com/PedroDNRusso/TCC-DS/tree/main/DOCS).
 
-## Diagramas e MERxDER
-![DC1.0](./WEB/img/DDUML%20(1).jpg)
-Para visualizar nosso canvas e calendario de desenvolvimento vá até [DOCS](https://github.com/PedroDNRusso/TCC-DS/tree/main/DOCS).
-
 ## Requisitos Sprint 1
 - [x] Escolher a metodologia **SCRUM, KANBAN, XP, outras**
 - [x] Definir **Papéis e responsabilidades**
