@@ -1,4 +1,11 @@
-# Wireframes do site
+# Wireframes do site e Requisitos Funcionais e Não Fucionais
+
+## Requisitos Funcionais
+
+- [RF001] Paciente pode fazer cadastro, atualizar suas informações e excluir seu cadastro
+- [RF001.1] Paciente pode visualizar e excluir recados e visualizar atestados
+- [RF002] Medico pode fazer cadastro, atualizar suas informações e excluir seu cadastro
+- [RF002.1] Medico pode criar atestados (Func_Med) e enviar recados para os pacientes (Mens_Med)
 
 ## Wireframes de Hub de Paciente
 ![Wireframe Home](./wireframes/WireframeHome.png)
