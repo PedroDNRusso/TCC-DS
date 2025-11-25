@@ -28,4 +28,16 @@
 
   <script src="script.js"></script>
 </body>
+<div id="modalResposta" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">&times;</span>
+
+    <h2>Responder Mensagem</h2>
+    <p><strong>ID do Médico:</strong> <span id="modalFromId"></span></p>
+    <p><strong>ID do Paciente:</strong> <span id="modalToId"></span></p>
+    <textarea id="campoResposta" placeholder="Digite sua resposta aqui..."></textarea>
+
+    <button class="enviar-button" onclick="enviarResposta()">Enviar Resposta</button>
+  </div>
+</div>
 </html>

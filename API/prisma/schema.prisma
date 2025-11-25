@@ -18,6 +18,7 @@ model Paciente{
   endereco String? @db.VarChar(200)
   atestado Func_Med[]
   mensagens Mens_Med[]
+  respostas Func_Ui[]
 }
 
 model Medico{
@@ -33,6 +34,7 @@ model Medico{
   endereco String? @db.VarChar(200)
   atestado Func_Med[]
   mensagens Mens_Med[]
+  respostas Func_Ui[]
 }
 
 model Func_Med{
@@ -48,6 +50,15 @@ model Func_Med{
   afast_c DateTime @db.Date
   motivo String @db.VarChar(100)
   ass_med String @db.VarChar(100)
+  paciente Paciente @relation(fields: [pacienteId], references: [id])
+  medico Medico @relation(fields: [medicoId], references: [id])
+}
+
+model Func_Ui {
+  id Int @id 
+  pacienteId Int 
+  medicoId Int 
+  mensagem String @db.VarChar(255)
   paciente Paciente @relation(fields: [pacienteId], references: [id])
   medico Medico @relation(fields: [medicoId], references: [id])
 }

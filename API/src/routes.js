@@ -5,6 +5,7 @@ const paciente = require('./controllers/paciente.js');
 const medico = require('./controllers/medico.js');
 const func_med = require('./controllers/func_med.js');
 const mens_med = require('./controllers/mens_med.js');
+const func_ui = require('./controllers/func_ui.js');
 const { validate } = require('./middleware/auth.js');
 const { validateMED } = require('./middleware/authm.js');
 
@@ -38,5 +39,11 @@ rota.post('/mensmed', validateMED, mens_med.create); // Rota para criar mensagem
 rota.get('/mensmed', validate, mens_med.read); // Rota para ler todos os mensagens
 rota.get('/mensmed/paciente/:pacienteId', validate, mens_med.readOne);
 rota.delete('/mensmed/:id', validate, mens_med.deletar); // Rota para deletar mensagem por ID
+
+// Rota de Mensagem de Usuário
+rota.post('/funcui', validate, func_med.create); // Rota para criar resposta
+rota.get('/funcui', validateMED, func_ui.read);
+rota.get('/funcui/medico/:medicoId', validateMED, func_ui.readOne);
+rota.delete('/funcui/:id', validateMED, func_ui.deletar); // Rota para deletar resposta por ID
 
 module.exports = rota;

@@ -1,5 +1,7 @@
 const usuario = JSON.parse(sessionStorage.getItem("usuario"));
 const token = sessionStorage.getItem("token");
+let mensagensGlobais = [];
+
 
 async function verificarToken() {
   if (!token) {
@@ -66,10 +68,13 @@ async function buscarMensagensDoPaciente(pacienteId) {
       card.className = 'mensagem-card';
 
       card.innerHTML = `
-        <h3>Mensagem #${mensagem.id}</h3>
-        <p><strong>Nome do Paciente:</strong> ${mensagem.nome_pac}</p>
-        <p><strong>ID no Médico:</strong> ${mensagem.medicoId}</p>
-        <p><strong>Mensagem:</strong> ${mensagem.mensagem}</p>
+          <h3>Mensagem #${mensagem.id}</h3>
+            <p><strong>Nome do Paciente:</strong> ${mensagem.nome_pac}</p>
+            <p><strong>ID no Médico:</strong> ${mensagem.medicoId}</p>
+            <p><strong>Mensagem:</strong> ${mensagem.mensagem}</p>
+          <button type="button" class="blue-button" onclick="acaoAzul(${mensagem.id})">
+             Responder
+          </button>
         <button type="button" class="delete-button" onclick="deletar(${mensagem.id})">Excluir</button>
       `;
 
@@ -112,6 +117,61 @@ function deletar(id) {
       console.error(err);
       alert("Erro ao conectar ao servidor.");
     });
+}
+
+async function enviarResposta() {
+  const idMensagem = document.getElementById("modalMsgId").textContent;
+  const idFrom = document.getElementById("modalFromId").textContent;
+  const idTo = document.getElementById("modalToId").textContent;
+  const resposta = document.getElementById("campoResposta").value;
+
+  if (!resposta.trim()) {
+    alert("Digite uma resposta antes de enviar.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/funcui", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...(token ? { "Authorization": "Bearer " + token } : {})
+      },
+      body: JSON.stringify({
+        pacienteId: idTo,
+        medicoId: idFrom,
+        mensagem: resposta
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert("Erro ao enviar resposta: " + data.message);
+      return;
+    }
+
+    alert("Resposta enviada com sucesso!");
+    fecharModal();
+  } catch (error) {
+    console.error("Erro ao enviar resposta:", error);
+    alert("Erro no servidor.");
+  }
+}
+
+function acaoAzul(idMensagem) {
+  const mensagem = mensagensGlobais.find(m => m.id === idMensagem);
+
+  document.getElementById("modalMsgId").textContent = idMensagem;
+  document.getElementById("modalFromId").textContent = mensagem.pacienteId;
+  document.getElementById("modalToId").textContent = usuario.id;
+
+  // Abre modal
+  document.getElementById("modalResposta").style.display = "block";
+}
+
+function fecharModal() {
+  document.getElementById("modalResposta").style.display = "none";
 }
 
 document.addEventListener('DOMContentLoaded', () => {

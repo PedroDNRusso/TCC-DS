@@ -29,8 +29,6 @@ if (!medico || !token) {
   window.location.href = "../login-med/index.html";
 } else {
   document.getElementById("id").value = medico.id;
-  document.getElementById("nome").value = medico.nome;
-  document.getElementById("crm").value = medico.crm;
 
   verificarToken(); // Verifica o token ao carregar
 }  
