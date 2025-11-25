@@ -1,38 +1,40 @@
-const usuario = JSON.parse(sessionStorage.getItem("usuario"));
+const medico = JSON.parse(sessionStorage.getItem("medico"));
 const token = sessionStorage.getItem("token");
-
-// variável global para armazenar todas as mensagens
-let mensagensGlobais = [];
 
 async function verificarToken() {
   if (!token) {
-    window.location.href = "../login/index.html";
+    window.location.href = "../login-med/index.html";
     return;
   }
   try {
-    const response = await fetch("http://localhost:3000/pacientes", {
+    // Faz uma requisição protegida para testar o token
+    const response = await fetch("http://localhost:3000/medicos", {
       method: "GET",
       headers: {
         "Authorization": "Bearer " + token
       }
     });
     if (response.status === 401 || response.status === 500) {
-      sessionStorage.removeItem("usuario");
+      // Token expirado ou inválido
+      sessionStorage.removeItem("medico");
       sessionStorage.removeItem("token");
       window.location.href = "../home/index.html";
     }
-  } catch (err) {}
+  } catch (err) {
+    // Se houver erro de conexão, não faz nada
+  }
 }
 
-if (!usuario || !token) {
-  window.location.href = "../login/index.html";
+if (!medico || !token) {
+  window.location.href = "../login-med/index.html";
 } else {
-  verificarToken();
+  // Não exibir senha por segurança
+  verificarToken(); // Verifica o token ao carregar
 }
 
-async function buscarMensagensDoPaciente(pacienteId) {
+async function buscarMensagensDoMedico(medicoId) {
   try {
-    const response = await fetch(`http://localhost:3000/mensmed/paciente/${pacienteId}`, {
+    const response = await fetch(`http://localhost:3000/funcui/medico/${medicoId}`, {
       headers: {
         ...(token ? { "Authorization": "Bearer " + token } : {})
       }
@@ -73,8 +75,7 @@ async function buscarMensagensDoPaciente(pacienteId) {
 
       card.innerHTML = `
         <h1>Mensagem #${mensagem.id}</h1>
-        <h2><strong>Enviada para:</strong> ${mensagem.nome_pac}</h2>
-        <p><strong>ID no Médico:</strong> ${mensagem.medicoId}</p>
+        <p><strong>ID do Paciente:</strong> ${mensagem.pacienteId}</p>
         <p><strong>Mensagem:</strong> ${mensagem.mensagem}</p>
 
         <button type="button" class="blue-button" onclick="acaoAzul(${mensagem.id})">
@@ -106,7 +107,7 @@ function deletar(id) {
     return;
   }
 
-  fetch(`http://localhost:3000/mensmed/${id}`, {
+  fetch(`http://localhost:3000/funcui/${id}`, {
     method: "DELETE",
     headers: {
       ...(token ? { "Authorization": "Bearer " + token } : {})
@@ -129,8 +130,9 @@ function deletar(id) {
 
 async function enviarResposta(idMensagem) {
   document.getElementById("modalMsgId").textContent = idMensagem;
-  const idFrom = document.getElementById("modalFromId").textContent;
-  const idTo = document.getElementById("modalToId").textContent;
+  const id_med = document.getElementById("id_med").textContent;
+  const nome_pac = document.getElementById("nome_pac").textContent;
+  const id_pac = document.getElementById("id_pac").textContent;
   const resposta = document.getElementById("campoResposta").value;
 
   if (!resposta.trim()) {
@@ -139,15 +141,16 @@ async function enviarResposta(idMensagem) {
   }
 
   try {
-    const response = await fetch("http://localhost:3000/funcui", {
+    const response = await fetch("http://localhost:3000/mensmed", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         ...(token ? { "Authorization": "Bearer " + token } : {})
       },
       body: JSON.stringify({
-        pacienteId: idTo,
-        medicoId: idFrom,
+        pacienteId: id_pac,
+        medicoId: id_med,
+        nome_pac: nome_pac,
         mensagem: resposta
       })
     });
@@ -171,8 +174,9 @@ function acaoAzul(idMensagem) {
   const mensagem = mensagensGlobais.find(m => m.id === idMensagem);
 
   document.getElementById("modalMsgId").textContent = idMensagem;
-  document.getElementById("modalFromId").textContent = mensagem.medicoId;
-  document.getElementById("modalToId").textContent = usuario.id;
+  document.getElementById("id_med").textContent = mensagem.medicoId;
+  document.getElementById("id_pac").textContent = mensagem.pacienteId;
+  document.getElementById("nome_pac").textContent = mensagem.nome_pac;
 
   // Abre modal
   document.getElementById("modalResposta").style.display = "block";
@@ -183,10 +187,11 @@ function fecharModal() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  buscarMensagensDoPaciente(usuario.id);
+  buscarMensagensDoMedico(medico.id);
 });
 
 let refreshInterval = null;
+
 
 function iniciarAutoRefresh() {
   if (!refreshInterval) {

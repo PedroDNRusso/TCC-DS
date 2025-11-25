@@ -41,7 +41,7 @@ rota.get('/mensmed/paciente/:pacienteId', validate, mens_med.readOne);
 rota.delete('/mensmed/:id', validate, mens_med.deletar); // Rota para deletar mensagem por ID
 
 // Rota de Mensagem de Usuário
-rota.post('/funcui', validate, func_med.create); // Rota para criar resposta
+rota.post('/funcui', validate, func_ui.create); // Rota para criar resposta
 rota.get('/funcui', validateMED, func_ui.read);
 rota.get('/funcui/medico/:medicoId', validateMED, func_ui.readOne);
 rota.delete('/funcui/:id', validateMED, func_ui.deletar); // Rota para deletar resposta por ID

@@ -8,14 +8,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="style.css">
-  <title>DD Paciente - Suas Mensagens</title>
+  <title>DD Medico - Suas Mensagens</title>
 </head>
 <body>
   <header class="main-header">
     <div class="header-content">
       <div class="nav_logo">Diagnóstico<span>Digital</span></div>
       <nav class="nav-buttons">
-        <a href="../ui/index.html"><button>Voltar</button></a>
+        <a href="../ui-med/index.html"><button>Voltar</button></a>
       </nav>
     </div>
   </header>
@@ -30,17 +30,21 @@
 </body>
 <div id="modalResposta" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="fecharModal()">&times;</span>
+    
+    <button class="modal-close" onclick="fecharModal()">&times;</button>
 
     <h2>Responder Mensagem</h2>
 
     <p><strong>ID da Mensagem:</strong> <span id="modalMsgId"></span></p>
-    <p><strong>ID do Médico:</strong> <span id="modalFromId"></span></p>
-    <p><strong>ID do Paciente:</strong> <span id="modalToId"></span></p>
+    <p><strong>ID do Paciente:</strong> <span id="id_pac"></span></p>
+    <p><strong>Nome do Paciente:</strong> <span id="nome_pac"></span></p>
+    <p><strong>ID do Médico:</strong> <span id="id_med"></span></p>
 
     <textarea id="campoResposta" placeholder="Digite sua resposta..."></textarea>
 
-    <button class="enviar-button" onclick="enviarResposta()">Enviar Resposta</button>
+    <button class="modal-send" onclick="enviarResposta(document.getElementById('modalMsgId').textContent)">
+      Enviar Resposta
+    </button>
   </div>
 </div>
 </html>

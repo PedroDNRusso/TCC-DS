@@ -31,7 +31,7 @@ const create = async (req, res) => {
     try {
         const id = await gerarIDUnico();
 
-        const func_ui = await prisma.func_ui.create({
+        const func_ui = await prisma.func_Ui.create({
             data: { id, pacienteId: Number(pacienteId), medicoId: Number(medicoId), mensagem},
         });
         console.log('Mensagem criada:', func_ui);
@@ -43,7 +43,7 @@ const create = async (req, res) => {
 };
 
 const read = async (req, res) => {
-    const func_uis = await prisma.func_ui.findMany();
+    const func_uis = await prisma.func_Ui.findMany();
     res.json(func_uis);
 }
 
@@ -55,7 +55,7 @@ const readOne = async (req, res) => {
     }
 
     try {
-        const mensagem = await prisma.func_ui.findMany({
+        const mensagem = await prisma.func_Ui.findMany({
             where: {
                 medicoId: Number(medicoId)
             }
@@ -78,14 +78,14 @@ const deletar = async (req, res) => {
         return res.status(400).json({ message: 'ID inválido ou ausente' });
     }
     try {
-        const func_uiExistente = await prisma.func_ui.findUnique({ where: { id: Number(id) } });
+        const func_uiExistente = await prisma.func_Ui.findUnique({ where: { id: Number(id) } });
 
         if (!func_uiExistente) {
             console.log('Mensagem não encontrado para exclusão');
             return res.status(404).json({ message: 'Mensagem não encontrado' });
         }
 
-        await prisma.func_ui.delete({ where: { id: Number(id) } });
+        await prisma.func_Ui.delete({ where: { id: Number(id) } });
         console.log('Mensagem excluído com sucesso');
         res.status(200).json({ message: 'Mensagem excluído com sucesso' });
     } catch (err) {
