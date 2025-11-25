@@ -229,5 +229,6 @@ Veja nosso prototipo no Figma [aqui](https://www.figma.com/design/3eLOSaQYqpNQFm
 | 09/09/2025     | Autenticação em todas as funções referentes a paciente e medico  |
 | 10/09/2025     | Deploy do Back-End e do Front-End no Vercel  |
 | 07/10/2025     | Back-End implantado 100% no Vercel e Front-End implantado 100% no Github Pages  |
+| 25/11/2025     | Criando função de resposta da UI de Paciente  |
 
 #### Readme escrito e estruturado por [Pedro Duarte Naddeu Russo](https://github.com/PedroDNRusso)
